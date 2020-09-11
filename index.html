@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stil.css">
+    <title>Frontend - JS</title>
+</head>
+<body>
+    
+
+    <label for="place">Enter a place to visit:</label>
+    <input type="text" id="place" name="place">
+    <button onclick="ajaxCall_insertPlace()">Submit</button>
+
+    <button onclick="ajaxCall_listOfPlaces()">Get places</button>
+    
+    <hr/>
+
+    <ul id="listOfPlaces"></ul>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+    function ajaxCall_listOfPlaces(){
+
+        $.ajax({
+            url: "http:localhost:3001/",
+            success: function(response) {        
+                var ul = document.getElementById('listOfPlaces');
+
+                for (let index = 0; index < response.length; index++) {
+                    var li = document.createElement('li');
+                    li.appendChild(document.createTextNode(response[index].text));
+                    ul.appendChild(li);
+                }
+            }
+        })
+
+    }
+
+    function ajaxCall_insertPlace(){
+
+        let input = document.getElementById('place').value;
+        console.log(input);
+
+        $.ajax({
+            url: "http:localhost:3001/insert",
+            method: "POST",
+            data: { text: input }
+        })
+
+        empty();
+
+    }
+
+    function empty(){
+	$("#place").val("")
+	return false;
+ }
+
+    
+
+    </script>
+
+</body>
+</html>

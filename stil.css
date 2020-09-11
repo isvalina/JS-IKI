@@ -1,0 +1,30 @@
+body{
+    margin: 5%;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16pt;
+}
+
+input{
+    height: 25px;
+}
+
+button{
+    padding: 4px;
+    font-family: 'Segoe UI', sans-serif;
+    border-radius: 5px;
+}
+
+hr{
+    border-color: grey;
+    background-color: grey;
+    height: 2px;
+    text-align: left;
+}
+
+ul.li{
+    text-align: center;
+}
+
+button:hover{
+    cursor: pointer;
+}
